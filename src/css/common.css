@@ -1,14 +1,9 @@
-* {
-  box-sizing: border-box;
-}
+@import url('./battleship.css');
+@import url('./reset.css');
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
-  color: #212121;
+  background-color: black;
+  color: white;
   line-height: 1.5;
 }
 
