@@ -1,0 +1,2 @@
+const e=Math.floor(5*Math.random());let a,t=e+1,r=t+1,o=0,l=0,s=!1;for(;0==s;)a=prompt("Ready, aim, fire! (enter a number from 0-6):"),a<0||a>6?alert("Please enter a valid cell number!"):(l+=1,a==e||a==t||a==r?(o+=1,alert("HIT!"),3==o&&(s=!0,alert("You sunk my battleship!"))):alert("MISS!"));alert("You took "+l+"guesses to sink the battleship, which means you shooting accuracy was "+3/l);
+//# sourceMappingURL=battle-ships.7885ea09.js.map
