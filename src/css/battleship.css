@@ -1,12 +1,13 @@
+.go-back {
+  display: block-inline;
+  position: absolute;
+}
+
 .container {
   width: 1024px;
   height: 863px;
   padding: 0 20px;
   margin: 0 auto;
-}
-
-.game-name-container {
-  margin-bottom: 25px;
 }
 
 .board {
