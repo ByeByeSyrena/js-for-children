@@ -11,14 +11,7 @@ const view = {
         const cell = document.getElementById(location);
         cell.setAttribute("class", "miss");
     },
-    isSunk: function (ship) {
-        for (i = 0; i < this.ship; i++) {
-            if (ship.hits[i] !== "hit") {
-                return false;
-            }
-        }
-        return true;
-    }
+    
 };
 
 
@@ -50,7 +43,14 @@ const model = {
         view.displayMessage("You missed.")
         return false;
     },
-    isSunk: function(ship) {},
+    isSunk: function (ship) {
+        for (i = 0; i < this.ship; i++) {
+            if (ship.hits[i] !== "hit") {
+                return false;
+            }
+        }
+        return true;
+    },
 };
 
 
