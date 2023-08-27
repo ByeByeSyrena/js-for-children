@@ -1,0 +1,2 @@
+!function(){for(var e=Math.floor(5*Math.random()),a=e+1,t=a+1,r=void 0,o=0,l=0,n=!1;0==n;)(r=prompt("Ready, aim, fire! (enter a number from 0-6):"))<0||r>6?alert("Please enter a valid cell number!"):(l+=1,r==e||r==a||r==t?(o+=1,alert("HIT!"),3==o&&(n=!0,alert("You sunk my battleship!"))):alert("MISS!"));alert("You took "+l+"guesses to sink the battleship, which means you shooting accuracy was "+3/l)}();
+//# sourceMappingURL=battle-ships.4efbc245.js.map
