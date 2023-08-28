@@ -53,13 +53,19 @@ const model = {
     },
 };
 
+
 const controller = {
     guesses: 0,
 
     processGuess: function (guess) {
-        
+        const location = parseGuess(guess);
+        if (location) {
+            this.guesses++;
+            const hit = model.fire(location);
+        }
     }
 };
+
 
 function parseGuess(guess) {
     const alphabet = ["A", "B", "C", "D", "E", "F", "G"];
@@ -67,7 +73,18 @@ function parseGuess(guess) {
     if (guess === null || guess.length !== 2) {
             alert("Oops, please enter a letter and a number on the board.");
         } else {
-            const firstChar = guess.charAt(0);
+        const firstChar = guess.charAt(0);
+        const row = alphabet.indexOf(firstChar);
+        const column = guess.charAt(1);
+
+        if (isNaN(row) || isNaN(column)) {
+            alert("Oops, that isn't on the board.");
+        } else if (row < 0 || row >= model.boardSize || column >= model.boardSize) {
+            alert("Oops, that's off the board!")
+        } else {
+            return row + column;
+        }
+        return null;
      }
 }
 
@@ -82,3 +99,9 @@ function parseGuess(guess) {
 // model.fire("12");
 // model.fire("11");
 // model.fire("10");
+
+// console.log(parseGuess("A0"));
+// console.log(parseGuess("B6"));
+// console.log(parseGuess("G3"));
+// console.log(parseGuess("HO"));
+// console.log(parseGuess("A7"));
