@@ -1,5 +1,4 @@
 @import url('./battleship.css');
-@import url('./battleship-v2.css');
 @import url('./reset.css');
 
 body {
@@ -11,50 +10,4 @@ body {
 img {
   display: block;
   max-width: 100%;
-}
-
-.go-back {
-  display: block-inline;
-  position: absolute;
-}
-
-.container {
-  width: 1024px;
-  height: 863px;
-  padding: 20px 20px;
-  margin: 0 auto;
-}
-
-.board {
-  position: relative;
-  width: 840px;
-  height: 680px;
-  margin: 0 auto;
-  background-image: url(../img/board.jpg);
-  background-repeat: no-repeat;
-  background-size: 840px 680px;
-}
-
-.hit {
-  background-image: url(../img/ship.png);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.miss {
-  background-image: url(../img/miss.png);
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-table {
-  position: absolute;
-  top: 60px;
-  left: 127px;
-  padding: 15px;
-}
-
-td {
-  width: 75px;
-  height: 73px;
 }
