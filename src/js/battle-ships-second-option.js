@@ -95,72 +95,55 @@ const model = {
   },
 };
 
-const controller = {
-  guesses: 0,
+// const controller = {
+//   guesses: 0,
 
-  processGuess: function (guess) {
-    const location = parseGuess(guess);
-    if (location) {
-      this.guesses++;
-      const hit = model.fire(location);
-      if (hit && model.shipsSunk === model.numShips) {
-        view.displayMessage(
-          'You sank all my battleships, in ' + this.guesses + ' guesses'
-        );
-      }
-    }
-  },
-};
+//   processGuess: function (guess) {
+//     const location = parseGuess(guess);
+//     if (location) {
+//       this.guesses++;
+//       const hit = model.fire(location);
+//       if (hit && model.shipsSunk === model.numShips) {
+//         view.displayMessage(
+//           'You sank all my battleships, in ' + this.guesses + ' guesses'
+//         );
+//       }
+//     }
+//   },
+// };
 
-function parseGuess(guess) {
-  const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+// function parseGuess(guess) {
+//   const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 
-  if (guess === null || guess.length !== 2) {
-    alert('Oops, please enter a letter and a number on the board.');
-  } else {
-    const firstChar = guess.charAt(0).toUpperCase();
-    const row = alphabet.indexOf(firstChar);
-    const column = guess.charAt(1);
+//   if (guess === null || guess.length !== 2) {
+//     alert('Oops, please enter a letter and a number on the board.');
+//   } else {
+//     const firstChar = guess.charAt(0).toUpperCase();
+//     const row = alphabet.indexOf(firstChar);
+//     const column = guess.charAt(1);
 
-    if (isNaN(row) || isNaN(column)) {
-      alert("Oops, that isn't on the board.");
-    } else if (row < 0 || row >= model.boardSize || column >= model.boardSize) {
-      alert("Oops, that's off the board!");
-    } else {
-      return row + column;
-    }
-  }
-  return null;
-}
+//     if (isNaN(row) || isNaN(column)) {
+//       alert("Oops, that isn't on the board.");
+//     } else if (row < 0 || row >= model.boardSize || column >= model.boardSize) {
+//       alert("Oops, that's off the board!");
+//     } else {
+//       return row + column;
+//     }
+//   }
+//   return null;
+// }
 
-function init() {
-  const fireButton = document.getElementById('fireButton');
-  fireButton.onclick = handleFireButton;
-  model.generateShipLocations();
-}
+// function init() {
+//   const fireButton = document.getElementById('fireButton');
+//   fireButton.onclick = handleFireButton;
+//   model.generateShipLocations();
+// }
 
-function handleFireButton() {
-  const guessInput = document.getElementById('guessInput');
-  const guess = guessInput.value;
-  controller.processGuess(guess);
-  guessInput.value = '';
-}
+// function handleFireButton() {
+//   const guessInput = document.getElementById('guessInput');
+//   const guess = guessInput.value;
+//   controller.processGuess(guess);
+//   guessInput.value = '';
+// }
 
-function handleKeyPress(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    handleFireButton();
-  }
-}
-
-function init() {
-  const fireButton = document.getElementById('fireButton');
-  const guessInput = document.getElementById('guessInput');
-  fireButton.onclick = handleFireButton;
-
-  guessInput.addEventListener('keypress', handleKeyPress);
-
-  model.generateShipLocations();
-}
-
-window.onload = init;
+// window.onload = init;
