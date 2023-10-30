@@ -15,14 +15,10 @@ const view = {
 
 const model = {
   boardSize: 7,
-  numShips: 5,
+  numShips: 7,
   shipsSunk: 0,
-  shipLength: 3,
-  ships: [
-    { locations: [0, 0, 0], hits: ['', '', ''] },
-    { locations: [0, 0, 0], hits: ['', '', ''] },
-    { locations: [0, 0, 0], hits: ['', '', ''] },
-  ],
+  ships: [],
+
   fire: function (guess) {
     for (let i = 0; i < this.numShips; i++) {
       const ship = this.ships[i];
@@ -42,37 +38,43 @@ const model = {
     view.displayMessage('You missed.');
     return false;
   },
+
   isSunk: function (ship) {
-    for (let i = 0; i < this.shipLength; i++) {
-      if (ship.hits[i] !== 'hit') {
-        return false;
-      }
-    }
-    return true;
+    return ship.hits.every(hit => hit === 'hit');
   },
+
   generateShipLocations: function () {
     let locations;
-    for (let i = 0; i < this.numShips; i++) {
+
+    for (let i = 0; i < 3; i++) {
       do {
-        locations = this.generateShip();
+        locations = this.generateShip(3);
       } while (this.collision(locations));
-      this.ships[i].locations = locations;
+      this.ships.push({ locations, hits: Array(3).fill('') });
+    }
+
+    for (let i = 0; i < 4; i++) {
+      do {
+        locations = this.generateShip(1);
+      } while (this.collision(locations));
+      this.ships.push({ locations, hits: [''] });
     }
   },
-  generateShip: function () {
+
+  generateShip: function (length) {
     const direction = Math.floor(Math.random() * 2);
     let row, col;
 
     if (direction === 1) {
       row = Math.floor(Math.random() * this.boardSize);
-      col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
+      col = Math.floor(Math.random() * (this.boardSize - length + 1));
     } else {
       col = Math.floor(Math.random() * this.boardSize);
-      row = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
+      row = Math.floor(Math.random() * (this.boardSize - length + 1));
     }
 
     let newShipLocations = [];
-    for (let i = 0; i < this.shipLength; i++) {
+    for (let i = 0; i < length; i++) {
       if (direction === 1) {
         newShipLocations.push(row + '' + (col + i));
       } else {
@@ -81,9 +83,10 @@ const model = {
     }
     return newShipLocations;
   },
+
   collision: function (locations) {
-    for (let i = 0; i < this.numShips; i++) {
-      const ship = model.ships[i];
+    for (let i = 0; i < this.ships.length; i++) {
+      const ship = this.ships[i];
       for (let j = 0; j < locations.length; j++) {
         const adjacentLocations = this.getAdjacentLocations(locations[j]);
         for (let k = 0; k < adjacentLocations.length; k++) {
@@ -119,8 +122,14 @@ function handleCellClick(event) {
   const location = cell.id;
   const hit = model.fire(location);
   cell.removeEventListener('click', handleCellClick);
-  if (hit && model.shipsSunk === model.numShips) {
-    view.displayMessage('You sank all my battleships!');
+
+  if (hit) {
+    if (model.shipsSunk === model.numShips) {
+      view.displayMessage('You sank all my battleships!');
+      cells.forEach(cell => {
+        cell.removeEventListener('click', handleCellClick);
+      });
+    }
   }
 }
 
