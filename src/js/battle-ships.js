@@ -100,6 +100,7 @@ const controller = {
 
   processGuess: function (guess) {
     const location = parseGuess(guess);
+    console.log(location);
     if (location) {
       this.guesses++;
       const hit = model.fire(location);
