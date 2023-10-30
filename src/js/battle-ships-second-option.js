@@ -11,11 +11,24 @@ const view = {
     const cell = document.getElementById(location);
     cell.classList.add('miss');
   },
+  displaySunk: function (ship) {
+    if (model.isSunk(ship)) {
+      if (ship.locations.length === 1) {
+        const oneCellCounter = document.getElementById('one-cell-counter');
+        const currentCount = parseInt(oneCellCounter.textContent);
+        oneCellCounter.textContent = currentCount + 1;
+      } else if (ship.locations.length === 3) {
+        const threeCellCounter = document.getElementById('three-cell-counter');
+        const currentCount = parseInt(threeCellCounter.textContent);
+        threeCellCounter.textContent = currentCount + 1;
+      }
+    }
+  },
 };
 
 const model = {
   boardSize: 7,
-  numShips: 7,
+  numShips: 6,
   shipsSunk: 0,
   ships: [],
 
@@ -27,6 +40,7 @@ const model = {
         ship.hits[index] = 'hit';
         view.displayHit(guess);
         view.displayMessage('HIT!');
+        view.displaySunk(ship);
         if (this.isSunk(ship)) {
           view.displayMessage('You sank my battleship!');
           this.shipsSunk++;
@@ -53,7 +67,7 @@ const model = {
       this.ships.push({ locations, hits: Array(3).fill('') });
     }
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
       do {
         locations = this.generateShip(1);
       } while (this.collision(locations));

@@ -1,7 +1,27 @@
+@import url('./reset.css');
+
+body {
+  background-color: black;
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
 #messageArea {
   position: relative;
   top: 0%;
   left: 0%;
+  z-index: 100;
+  color: rgb(83, 175, 19);
+}
+
+#counterArea {
+  position: absolute;
+  top: 0%;
+  right: 0%;
   z-index: 100;
   color: rgb(83, 175, 19);
 }
@@ -22,6 +42,14 @@ form input {
 .go-back {
   display: block-inline;
   position: absolute;
+  color: rgb(152, 207, 113);
+  padding: 6px 15px;
+  border-radius: 20px;
+}
+
+.go-back:hover {
+  background-color: rgb(83, 175, 19);
+  color: white;
 }
 
 .container {
