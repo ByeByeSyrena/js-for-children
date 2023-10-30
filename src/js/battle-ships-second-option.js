@@ -15,7 +15,7 @@ const view = {
 
 const model = {
   boardSize: 7,
-  numShips: 3,
+  numShips: 5,
   shipsSunk: 0,
   shipLength: 3,
   ships: [
