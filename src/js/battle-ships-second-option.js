@@ -1,3 +1,5 @@
+import { showPlayAgainModal } from './play-again-modal';
+
 const view = {
   displayMessage: function (msg) {
     const messageArea = document.getElementById('messageArea');
@@ -143,6 +145,7 @@ function handleCellClick(event) {
       cells.forEach(cell => {
         cell.removeEventListener('click', handleCellClick);
       });
+      // showPlayAgainModal();
     }
   }
 }

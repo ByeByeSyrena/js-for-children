@@ -92,3 +92,7 @@ td {
   width: 75px;
   height: 73px;
 }
+
+.play-again-modal {
+  display: none;
+}
