@@ -1,0 +1,72 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 100vh;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+#user-output {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 100px;
+  border: 1px solid black;
+}
+
+#user-output span {
+  border: 1px solid black;
+  padding: 5px;
+  margin-right: 5px;
+}
+
+#user-input {
+  margin-bottom: 10px;
+}
+
+.highlighted {
+  padding: 5px;
+  position: absolute;
+  cursor: move;
+  background-color: yellow;
+  color: red;
+}
+
+.active {
+  color: green;
+}
+
+#draggable {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  color: white;
+  position: absolute;
+  cursor: pointer;
+}
+
+.item.dragging :where(#user-output, span) {
+  opacity: 0;
+}
+
+.selected {
+  color: blue;
+  font-size: 18px;
+}
+
+.combined {
+  color: green;
+  font-size: 18px;
+}
